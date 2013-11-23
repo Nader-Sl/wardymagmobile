@@ -15,7 +15,7 @@
 	    <link href="jquery.loadmask.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" type="text/css" href="jquery.resizeandcrop.css"></link>
 	   <script type="text/javascript" src="phonegap.js" charset="utf-8"></script>	
-	   	<!-- <script type="text/javascript" src="js/share.js" charset="utf-8"></script>	-->
+	   	<script type="text/javascript" src="js/share.js" charset="utf-8"></script>	
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="js/imgLiquid-min.js"></script> 
@@ -244,7 +244,6 @@ initFastButtons();
 
 function onDeviceReady() {
    //   alert(device.platform);
-
      document.addEventListener("backbutton", onBackKeyDown, false);
   $( '#home' ).on( 'pageshow',function(event, ui){
   if(maskHome){
