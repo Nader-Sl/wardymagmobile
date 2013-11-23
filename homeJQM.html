@@ -244,8 +244,7 @@ initFastButtons();
 
 function onDeviceReady() {
    //   alert(device.platform);
-    navigator.splashscreen.hide();
-   cordova.exec(null, null, "SplashScreen", "hide", [])
+
      document.addEventListener("backbutton", onBackKeyDown, false);
   $( '#home' ).on( 'pageshow',function(event, ui){
   if(maskHome){
