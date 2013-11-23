@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html dir="rtl">
+    <head>
+<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="stylesheet2.css">
+<link rel="stylesheet" type="text/css" href="reset.css">
+   <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>مجلة وردي</title>
+
+
+	    <link href="jquery.loadmask.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="jquery.resizeandcrop.css"></link>
+	   <script type="text/javascript" src="phonegap.js" charset="utf-8"></script>	
+	   	<!-- <script type="text/javascript" src="js/share.js" charset="utf-8"></script>	-->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script src="js/imgLiquid-min.js"></script> 
+		<script type="text/javascript" src="js/jquery.loadmask.js"></script>
+        <script type="text/javascript" src="js/RSS.js" charset="UTF-8"></script>
+		 <script type="text/javascript" src="js/fastclick.js" charset="UTF-8"></script>
+	     <script type="text/javascript" src="js/jquery.resizeandcrop.js" charset="UTF-8"></script>
+
+<script>
+//GLOBAL VARS
+var timeout;
+var splashTime = 3500;
+var maskHome = true;
+</script>
+<script>
+   $(document).bind("mobileinit", function(){
+      $.mobile.defaultPageTransition = 'none';
+      $.mobile.defaultDialogTransition = 'none';
+	  $.mobile.buttonMarkup.hoverDelay = 0;
+      $.mobile.useFastClick = true;
+});
+       $(document).on("mobileinit", function () {
+    $.mobile.ignoreContentEnabled=true;
+});
+
+$( document ).on( "pageinit","#home", function( event ) {
+initFastButtons();
+});
+</script>
+	
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		
+     
+		
+		
+    </head>
+    <body id="splash">
+	
+	 <div data-role="page" data-enhance="false" id="splashWrapper" class="wrapper">
+	 <div data-role="content" >
+	  
+        <div class="slogan">اول مجلة عن سرطان الثدي<br>
+             في الشرق الأوسط
+                </div><!--end of slogan -->
+        <img src="images/wardy-logo.png" width="276" height="128" alt="Wardy logo" class="logo">
+            <div class="loading">
+            <img src="images/ajax-loader.gif" width="16" height="16">
+            Loading...
+            </div> 
+    </div><!--end of wrapper -->  
+	</div>
+	<div  id="home" data-role="page" data-enhance="false" class="home">
+	
+	 <nav id="main-menu" >
+<a href="" onClick="toggle()" class="toggle-inside"></a>	
+<ul>
+<li><a rel="nofollow" id="abtus" >من نحن</a></li>
+<li><a rel="nofollow" onclick='grabRSS()'>أحدث المقالات و الأخبار </a></li>
+<li><a rel="nofollow" onclick='grabRSS("malafwardy")'>الملف الوردي</a></li>
+<li><a rel="nofollow" onclick='grabRSS("wardyNews")'>أخبارنا الوردية</a></li>
+<li><a rel="nofollow" onclick='grabRSS("samiaWorld")'>عالم د.سامية الوردي</a></li>
+<li><a rel="nofollow" onclick='grabRSS("cancerStories")'>قصص سرطان جميلة</a></li>
+<li><a rel="nofollow" onclick='grabRSS("localCancerSociety")'>مجتمع السرطان محليا</a></li>
+<li><a rel="nofollow" onclick='grabRSS("globalCancerSociety)'>مجتمع السرطان دوليا</a></li>
+<li><a rel="nofollow" onclick='grabRSS("starsAndCancer")'>مشاهير العالم
+ والسرطان</a></li>
+<li><a rel="nofollow" onclick='grabRSS("knowCancer")'>تعرف على السرطان</a></li>
+<li><a rel="nofollow" onclick='grabRSS("research")'>مستجدات و أبحاث</a></li>
+<li><a rel="nofollow" onclick='grabRSS("healthCare")'>دور مقدمي الرعاية
+ الصحية</a></li>
+<li><a rel="nofollow" onclick='grabRSS("girls")'>البنات و الشريط 
+الزهري</a></li>
+<li><a rel="nofollow" onclick='grabRSS("supporters")'>الداعمون و المناصرين</a></li>
+<li><a rel="nofollow" onclick='grabRSS("patientsRights")'>حقوق مرضى السرطان</a></li>
+<li><a rel="nofollow" onclick='grabRSS("jihatDuwaliya")'>جهات دولية</a></li>
+<li><a rel="nofollow" onclick='grabRSS("wardyScreen")'>شاشة وردي</a></li>
+<li><a rel="nofollow" onclick='grabRSS("deafWorld")'>ملحق عالم الصم</a></li>
+<li><a rel="nofollow" onclick='grabRSS("library")'>المكتبة الإلكترونية</a></li>
+</ul>
+</nav>
+
+        <div data-role="content" class="wrapper"  id="list">
+            <div class="main">
+           <img src="images/inside-logo.png" width="248" height="49" class="inner-logo">
+                <a rel="nofollow" onClick="toggle()" id="menuToggle" href="#menu" class="menu-trigger ss-icon"></a>
+            
+            </div>
+            <div class="latest-news">
+                <div class="inner-wrapper">
+                    أحدث المقالات و الأخبار
+                </div><!--end of inner-wrapper --> 
+            </div><!--end of latest-news -->
+            <div class="featured-article">
+                <img src="images/none.png">
+                <div class="featured-title"><div class="inner-wrapper">
+                        <a href=""></a>
+
+                    </div><!--end of inner-wrapper -->
+                </div><!--end of featured-title -->
+
+            </div><!--end of featured-article -->
+	
+<div id="listWrapper">
+		<span id="fastclick">
+            <ul  data-role="listview"  class="article-listing"  >
+
+                <li > <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+						<div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                    <li > <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+						<div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                        <li > <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+						    <div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                    <li> <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+                            <div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                      <li> <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+                             <div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                       <li> <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+                              <div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                     <li > <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+                             <div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                     <li > <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+                             <div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                     <li > <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div  class="inner-wrapper">
+                            <div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span  class="article-listing-title"></span>
+                            <img  src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+                     <li > <a style="text-decoration:none !important;" href="#articleWrapper1">
+                        <div class="inner-wrapper">
+                            <div class="listItem">
+                            <img width="64" height="42" class="thumb">
+							</div>
+                            <span class="article-listing-title"></span>
+                            <img src="images/arrow.png" width="15" height="23" alt="arrow" class="arrow">
+                        </div><!--end of inner-wrapper -->
+                    </a> 
+                </li>
+            </ul>
+			</span>
+			</div>
+        </div><!--end of wrapper -->
+</div>
+        <script  type="text/javascript" charset="UTF-8" >
+		 $( "#main-menu" ).hide();	
+	function toggle()
+	{
+	 $( "#main-menu" ).toggle( "slide",1);
+	}
+		function toggle2()
+	{
+	 location.hash = "#home";
+	 $( "#main-menu" ).toggle( "slide",1);
+	}
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+
+function onDeviceReady() {
+   //   alert(device.platform);
+    navigator.splashscreen.hide();
+   cordova.exec(null, null, "SplashScreen", "hide", [])
+     document.addEventListener("backbutton", onBackKeyDown, false);
+  $( '#home' ).on( 'pageshow',function(event, ui){
+  if(maskHome){
+$("#listWrapper").mask("<br>");
+$(".featured-article").mask("<br>");
+maskHome = false;
+}
+});
+ $("ul[class='article-listing'] li").each(function(i, e) {
+            e.setAttribute("id", "list" + (i + 1));
+            })
+			  $(".listItem").each(function(i, e) {
+            e.setAttribute("id", "listItem" + (i + 1));
+            })
+            //set the href attribute to all list items.
+          $("ul[class='article-listing'] li a").each(function(i, e) {
+            e.setAttribute("href", "#articleWrapper" + (i + 1));
+          })
+                    //set the id attribute to all spans in list items.
+            $("ul[class='article-listing'] li span").each(function(i, e) {
+            e.setAttribute("id", "link" + (i + 1));
+            })
+                    //dynamically create the article views (treat divs as views/sections/pages)
+             for (i = 1; i <= maxLength + 1; i++){
+
+            var html = 
+			'<div data-enhance="false" data-role="page" id="articleWrapper'+i+'">'+
+	
+			'<div data-role="content" >'+
+                    '<div data-enhance="false" class="main">'+
+                 
+                      '<img src="images/inside-logo.png" width="248" height="49" class="inner-logo">'+
+					 '<a rel="nofollow" onClick="toggle2()" id="menuToggle" href="#menu" class="menu-trigger ss-icon"></a>'+
+                       ' </div>'+
+                    '<div class="category-inside">'+
+                '<div class="inner-wrapper" id="articleCategory'+i+'">'+
+              
+        '</div><!--end of inner-wrapper -->' +
+        '</div><!--end of latest-news -->'+
+                    '<div class="post-nav">'+
+                    '<div class="inner-wrapper">'+
+				((i == (maxLength + 1))?"":(
+                    '<a href="#articleWrapper' + String(i-1) + '" class="arrow-left" data-enhance="false" data-role="button"></a>'+
+                    '<a href="#articleWrapper' + String(i+1) + '" class="arrow-right" data-enhance="false" data-role="button"></a>'))+ 
+                    '</div><!--end of inner-wrapper --> '+
+                    '</div><!--end of post-nav -->'+   
+                    '<div class="article-body">'+
+       	    //'<img class="article-image" id="articleImg'+i+'">'+
+            '<div class="inner-wrapper">'+ 
+            	'<span class="article-title" id="articleHeader'+i+'"></span>'+
+              '<div class="article-content" id="articleContent'+i+'">'+'<p></p>'+
+			
+			     
+             '<a onclick=share('+i+')> <img src="images/share.png" width="86" height="39" alt="share" class="share"></a>'+
+
+               '</div> ' + 
+            '</div>' +
+       '</div>'  +
+   '</div>'+
+   '</div>'  
+
+            $("body").append(html);//.trigger("create");    
+            }	
+	
+		//set about us's href
+		$("#abtus").attr('href',"#articleWrapper"+(maxLength+1));
+		//set about us's content
+		$('#articleWrapper'+(maxLength+1)+' .article-content p').html('<h1 class="pink-large" dir="rtl">من نحن</h1>'+
+'<p dir="rtl">من نحن هو عنوان لمجموعة أحلام كنت أحلم بها تبلورت لتصبح حقيقة من خلال إطلاق عالم وردي عن كل ما عشته منذ لحظة إصابتي بسرطان الثدي في إبريل لعام 2006م ومن يومها أصبح عالمي ورديا ابتداء من الشريط الزهري الذي لم يغادر عباءتي منذ هذا التاريخ مرورا بكل الهموم التي حملتها في تجربتي وتحولت الى قضية عمر تشمل كسر حاجز الصمت ونشر ثقافة الفحص المبكر في المجتمع ونشر التوعية بين كل الأطياف من رجال ونساء وأطفال وقطاع طبي وبين رجال الدين وصانع القرار ووصولا الى مرحلة جديدة في عملي وهي تولي قضية الحقوق الصحية لمريضات سرطان الثدي وتوعية المجتمع من خلال التمكين الصحي ونشر ثقافة الحقوق الصحية.</p>'+
+'<p dir="rtl">خلال هذه الرحلة الطويلة كان الإعلام رفيقي وأداتي ووسيلتي للوصول الى كل امرأة في كل بيت وزاوية في هذا الوطن ... هذا الإعلام الذي عشقته منذ شبابي حتى أنني كنت أقول لو لم أدخل الطب لدخلت الإعلام من شدة عشقي له.</p>'+
+'<p dir="rtl">واليوم يتوج هذا الحب بهذا الإصدار الذي جاء ليحقق أحلامي الإعلامية والطبية والمجتمعية ويتم الإعلان عن مولد مجلة إلكترونية هي ( الأولى من نوعها في مجال سرطان الثدي على حد علمي في عالمنا العربي ) لتنطلق من وطننا تنشر الوعي بسرطان الثدي عبر أحدث التقنيات فهي مجلة إلكترونية وتعتمد على وسائل التواصل الحديثة في النقل والانتشار وهي نوع من الإعلام الصحي الذي نفتقده في عالمنا والحاجة شديدة إليه لقلة المتاح فيه وهذه المجلة مولود حلمت به قبل إصابتي وما علمت أنه سيتحقق بعد زمن وفي مجال سرطان الثدي الذي أصابني والذي أسميت إصابتي به رسالة حب من الله وحملتها قضية عمر إلى أخر يوم من عمري.</p>'+
+'<p dir="rtl">أتمنى ان اكون قد وفقت وفريق عملي في أن نحظى بمولود يستحق المعاناة والمخاض العسير الذي طال بي لسنوات حتى جاء الى النور ليكون مولودا حملته في قلبي ووضعته بإحساسي ليحقق احلامي في الارتقاء بالوعي الصحي في بلدي ونشر ثقافة الفحص المبكر بل إن أحلامي الكبيرة لتبلغ السماء بأن تحقق هذه الجهود الصغيرة الحلم الأكبر بأن تعيش ابنتي وبناتكم في عالم خالي من السرطان وأن تجلس إسراء يوما بعد عمر طويل تحكي مع صديقاتها عن مرض كان يصيب النساء زمان اسمه "سرطان الثدي".</p>'+
+'<p dir="rtl">من أجلك يا إسراء ومن أجل كل بنات ونساء العالم كانت هذه المجلة وهذه الجهود والحلم يتحول الى حقيقة بالدعاء فاللهم تقبله منا علما نافعا وعملا خالصا لوجهك الكريم وانفع به مع كل الحب للجميع.</p>'+
+'د سامية العمودي'+
+'ناجية من سرطان الثدي'+
+'ناشطة في التمكين الصحي والحقوق الصحية'+
+'أكتوبر لعام 2013م')
+//grab the RSS
+ grabRSS();
+ 
+timeout = setTimeout(function(){
+ location.hash = "#home";
+  },100000);
+  
+  }
+  
+function share(index) {
+var share = cordova.require("cordova/plugin/share");
+share.show({subject:"Wardy News",text: permas[index]},
+function() {
+//console.log("PhoneGap Plugin: Share: callback success");
+},
+function() {
+console.log("PhoneGap Plugin: Share: callback error");
+}
+);
+}
+  function onBackKeyDown()
+  {
+  if($('#home').is(':visible') || $('#splashWrapper').is(':visible'))
+   navigator.app.exitApp();
+ else   location.hash = "#home";
+  return true;
+  }
+//crop img
+// $('img').resizecrop({
+//      width:40,
+//      height:60,
+//      vertical:"top"
+//    });  
+ 
+        </script>
+
+    </body>
+</html>
